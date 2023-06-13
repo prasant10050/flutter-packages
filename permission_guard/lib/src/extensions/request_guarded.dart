@@ -32,6 +32,7 @@ extension RequestGuardedMethodExtension on Permission {
     bool fillAvailableSpace = false,
   }) async {
     PermissionStatus status = await request();
+
     if (options.validStatuses.contains(status)) return status;
 
     if (context.mounted) {
@@ -55,8 +56,7 @@ extension RequestGuardedMethodExtension on Permission {
             content: Stack(
               children: [
                 Column(
-                  mainAxisSize:
-                      fillAvailableSpace ? MainAxisSize.max : MainAxisSize.min,
+                  mainAxisSize: fillAvailableSpace ? MainAxisSize.max : MainAxisSize.min,
                   children: [
                     PermissionGuard(
                       permission: this,
